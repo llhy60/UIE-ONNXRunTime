@@ -1,0 +1,11 @@
+type: UIE
+name: general information extract
+
+engine: onnx
+device: cpu
+use_fp16: True
+model_path: models/uie_model/fp16_model.onnx
+position_prob: 0.5
+max_seq_len: 512
+batch_size: 64
+split_sentence: False

@@ -1,0 +1,13 @@
+type: UIE
+name: general information extract
+
+engine: onnx
+device: cpu
+use_fp16: True
+model_path: models/uie-x_model/fp16_model.onnx
+vocab_file: models/uie-x_model/vocab.txt
+ocr_config_path: configs/ch_ppocr_v4.yaml
+position_prob: 0.5
+max_seq_len: 512
+batch_size: 64
+split_sentence: False

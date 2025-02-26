@@ -1,0 +1,47 @@
+type: ppocr_v4
+name: ch_PP-OCRv4 (PaddleOCR)
+
+# params for prediction engine
+use_onnx: True
+use_openvino: False
+use_tensorrt: False
+min_subgraph_size: 15
+precision: fp32
+
+use_angle_cls: False
+
+det_model:
+    det_algorithm: DB
+    det_model_path: models/ch_ppocr_v4/ch_PP-OCRv4_det_infer.onnx
+    det_db_thresh: 0.3
+    det_db_box_thresh: 0.6
+    det_db_unclip_ratio: 1.5
+    max_batch_size: 10
+    use_dilation: False
+    det_db_score_mode: fast
+    det_limit_side_len: 960
+    det_resize_long:
+    det_limit_type: max
+    det_box_type: quad
+
+rec_model:
+    rec_algorithm: SVTR_LCNet
+    rec_model_path: models/ch_ppocr_v4/ch_PP-OCRv4_rec_infer.onnx
+    rec_batch_num: 1
+    rec_image_inverse: True
+    rec_image_shape: "3, 48, 320"
+    max_text_length: 25
+    rec_char_dict_path: pipelines/configs/ppocr_keys_v1.txt
+    use_space_char: True
+    drop_score: 0.5
+
+cls_model:
+    cls_model_path: models/ch_ppocr_v4/ch_ppocr_mobile_v2.0_cls_infer.onnx
+    cls_image_shape: "3, 48, 192"
+    label_list: ["0", "180"]
+    cls_batch_num: 6
+    cls_thresh: 0.9
+    enable_mkldnn: False
+    cpu_threads: 10
+    use_pdserving: False
+    warmup: False
