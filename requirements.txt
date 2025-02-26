@@ -1,0 +1,12 @@
+pillow
+six
+uuid
+PyYAML
+numpy
+requests
+pyclipper
+Shapely==1.8.5.post1
+opencv-python
+opencv-python-headless
+transformers==4.28.1
+onnxruntime
